@@ -5,4 +5,4 @@ set (CMAKE_CXX_STANDARD 20)
 
 add_executable(Patoh main.cpp)
 
-target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/macOS/libpatoh.a)
+target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/Linux/libpatoh.a)
