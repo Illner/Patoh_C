@@ -5,5 +5,10 @@ set (CMAKE_CXX_STANDARD 20)
 
 add_executable(Patoh main.cpp)
 
-find_library (PATOH_MAC_OS_APPLE_SILICON_LIBRARY libpatoh "./macOS")
-target_link_libraries (Patoh LINK_PUBLIC ${PATOH_MAC_OS_APPLE_SILICON_LIBRARY})
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/macOS/libpatoh.a)
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/Linux/libpatoh.a)
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

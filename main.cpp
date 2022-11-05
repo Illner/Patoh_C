@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 
-#include "macOS/patoh.h"
+#include "patoh.h"
 
 int main(int argc, char *argv[])
 {
