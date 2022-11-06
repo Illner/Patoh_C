@@ -28,5 +28,5 @@ ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # Undefined
 ELSE()
-    message(FATAL_ERROR "Your operating system is not supported!")
+    message(FATAL_ERROR "Your operating system (" ${CMAKE_SYSTEM_NAME} ") is not supported!")
 ENDIF()
