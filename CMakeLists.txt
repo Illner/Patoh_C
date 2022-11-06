@@ -20,7 +20,7 @@ IF (${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
 # Windows
 ELSEIF ((${CMAKE_SYSTEM_NAME} STREQUAL "Windows") OR (CMAKE_SYSTEM_NAME STREQUAL "CYGWIN"))
     message("Operating system: Windows")
-    message("PaToH is not supported!")
+    message(FATAL_ERROR "PaToH is not supported!")
 
 # Linux
 ELSEIF (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
