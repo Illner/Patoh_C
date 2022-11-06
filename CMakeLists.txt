@@ -18,7 +18,7 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     ENDIF ()
 
 # Windows
-ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+ELSEIF ((${CMAKE_SYSTEM_NAME} MATCHES "Windows") OR (${CMAKE_SYSTEM_NAME} MATCHES "CYGWIN"))
     message("Windows")
 
 # Linux
