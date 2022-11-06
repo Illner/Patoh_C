@@ -5,10 +5,28 @@ set (CMAKE_CXX_STANDARD 20)
 
 add_executable(Patoh main.cpp)
 
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/macOS/libpatoh.a)
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+# macOS
+IF (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    # Apple Silicon
+    IF (${CMAKE_SYSTEM_PROCESSOR} MATCHES "arm64")
+        message("macOS (Apple Silicon)")
+        target_link_libraries(Patoh "${CMAKE_SOURCE_DIR}/macOS/Apple Silicon/libpatoh.a")
+    # Intel
+    ELSE ()
+        message("macOS (Intel)")
+        target_link_libraries(Patoh "${CMAKE_SOURCE_DIR}/macOS/Intel/libpatoh.a")
+    ENDIF ()
 
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+# Windows
+ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    message("Windows")
+
+# Linux
+ELSEIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    message("Linux")
     target_link_libraries(Patoh ${CMAKE_SOURCE_DIR}/Linux/libpatoh.a)
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+# Undefined
+ELSE()
+    message(FATAL_ERROR "Your operating system is not supported!")
+ENDIF()
